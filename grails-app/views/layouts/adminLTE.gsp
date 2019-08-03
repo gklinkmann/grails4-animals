@@ -74,21 +74,6 @@
               <small>Member since Nov. 2012</small>
             </p>
           </li>
-          <!-- Menu Body -->
-          <li class="user-body">
-            <div class="row">
-              <div class="col-4 text-center">
-                <a href="#">Followers</a>
-              </div>
-              <div class="col-4 text-center">
-                <a href="#">Sales</a>
-              </div>
-              <div class="col-4 text-center">
-                <a href="#">Friends</a>
-              </div>
-            </div>
-            <!-- /.row -->
-          </li>
           <!-- Menu Footer-->
           <li class="user-footer">
             <a href="#" class="btn btn-default btn-flat">Profile</a>
@@ -106,6 +91,18 @@
   <!-- /.navbar -->
 	<g:layoutBody />
 
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 0.1
+    </div>
+    <strong>03.08.2019 <a href="https://blog.k-oo.de">k-oo.de</a>.</strong> 
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
