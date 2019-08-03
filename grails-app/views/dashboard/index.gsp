@@ -34,30 +34,54 @@
 
 		<!-- Main content -->
 		<section class="content">
+			<div class="container-fluid">
+				<!-- Small boxes (Stat box) -->
+				<div class="row">
+					<div class="col-lg-3 col-6">
+						<!-- small box -->
+						<div class="small-box bg-info">
+							<div class="inner">
+								<h3>${animalInstanceTotal}</h3>
 
-			<!-- Default box -->
-			<div class="card">
-				<div class="card-header">
-					<h3 class="card-title">Title</h3>
-
-					<div class="card-tools">
-						<button type="button" class="btn btn-tool" data-widget="collapse"
-							data-toggle="tooltip" title="Collapse">
-							<i class="fas fa-minus"></i>
-						</button>
-						<button type="button" class="btn btn-tool" data-widget="remove"
-							data-toggle="tooltip" title="Remove">
-							<i class="fas fa-times"></i>
-						</button>
+								<p>
+									<g:message code="animals.label" default="Animals" />
+								</p>
+							</div>
+							<div class="icon">
+								<i class="ion ion-bug"></i>
+							</div>
+							<g:link controller="animal"
+								class="small-box-footer"> More info <i
+								class="fas fa-arrow-circle-right"></i>
+							</g:link>
+						</div>
 					</div>
+					<!-- ./col -->
+					<sec:access expression="hasRole('ROLE_ADMIN')">
+					<div class="col-lg-3 col-6">
+						<!-- small box -->
+						<div class="small-box bg-warning">
+							<div class="inner">
+								<h3>${userInstanceTotal}</h3>
+
+								<p><g:message code="users.label" default="Users" /></p>
+							</div>
+							<div class="icon">
+								<i class="ion ion-person-add"></i>
+							</div>
+							<g:link controller="user"
+								class="small-box-footer"> More info <i
+								class="fas fa-arrow-circle-right"></i>
+							</g:link>
+						</div>
+					</div>
+					</sec:access>
+					<!-- ./col -->
 				</div>
-				<div class="card-body">Start creating your amazing
-					application!</div>
-				<!-- /.card-body -->
-				<div class="card-footer">Footer</div>
-				<!-- /.card-footer-->
+				<!-- /.row -->
+
 			</div>
-			<!-- /.card -->
+			<!-- /.container-fluid -->
 
 		</section>
 		<!-- /.content -->
