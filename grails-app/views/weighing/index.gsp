@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="animals" />
+        <meta name="layout" content="adminLTE" />
         <g:set var="entityName" value="${message(code: 'weighing.label', default: 'Weighing')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>

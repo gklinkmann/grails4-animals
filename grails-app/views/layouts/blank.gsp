@@ -22,8 +22,8 @@
 		<g:layoutBody />
 
 		<!-- jQuery -->
-		<asset:javascript src="js/jquery/jquery.min.js" type="text/javascript" />
+		<asset:javascript src="js/jquery/jquery.min.js" />
 		<!-- Bootstrap 4 -->
-		<asset:javascript src="js/bootstrap/js/bootstrap.bundle.min.js" type="text/javascript" />
+		<asset:javascript src="js/bootstrap/js/bootstrap.bundle.min.js" />
 	</body>
 </html>

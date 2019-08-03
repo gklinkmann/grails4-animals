@@ -45,7 +45,7 @@
 
 <div class="svg" role="presentation">
     <div class="grails-logo-container">
-        <asset:image src="animals.svg" class="grails-logo"/>
+        <!-- <asset:image src="animals.svg" class="grails-logo"/>  -->
     </div>
 </div>
 
