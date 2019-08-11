@@ -18,8 +18,7 @@
 				<div class="row mb-2">
 					<div class="col-sm-6">
 						<h1>
-							<g:message code="animals.label" default="Animals" />
-							<small>Administration</small>
+							<g:message code="default.list.label" args="[entityName]" />
 						</h1>
 					</div>
 					<div class="col-sm-6">
@@ -41,12 +40,6 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="card">
-							<div class="card-header">
-								<h3 class="card-title">
-									<g:message code="default.list.label" args="[entityName]" />
-								</h3>
-							</div>
-							<!-- /.card-header -->
 							<div class="card-body">
 
 								<g:if test="${flash.message}">
@@ -58,18 +51,17 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-sm-12 col-md-6">
-									</div>
+									<div class="col-sm-12 col-md-6"></div>
 									<div class="col-sm-12 col-md-6">
 										<div class="pagination">
-											<g:paginate
-												total="${animalCount ?: 0}" maxsteps="3" />
+											<g:paginate total="${animalCount ?: 0}" maxsteps="3" />
 										</div>
 									</div>
 								</div>
 							</div>
 							<!-- /.card-body -->
 						</div>
+						<!-- /.card -->
 					</div>
 					<!-- /.col -->
 				</div>
@@ -80,6 +72,5 @@
 		<!-- /.content -->
 	</div>
 	<!-- /.content-wrapper -->
-	</script>
 </body>
 </html>

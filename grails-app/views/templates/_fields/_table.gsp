@@ -12,12 +12,24 @@
 				<g:each in="${domainProperties}" var="p" status="j">
 					<g:if test="${j==0}">
 						<td><g:link method="GET" resource="${bean}">
-								<f:display bean="${bean}" property="${p.property}" />
-							</g:link>
-						</td>
+								<g:if
+									test="${bean.properties.get(p.name) instanceof java.sql.Timestamp}">
+									<g:formatDate format="dd.MM.yyyy H:m"
+										date="${bean.properties.get(p.name)}" />
+								</g:if>
+								<g:else>
+									${bean.properties.get(p.name)}
+								</g:else>
+							</g:link></td>
 					</g:if>
 					<g:else>
-						<td><f:display bean="${bean}" property="${p.property}" /></td>
+						<td><g:if
+								test="${bean.properties.get(p.name) instanceof java.sql.Timestamp}">
+								<g:formatDate format="dd.MM.yyyy H:m"
+									date="${bean.properties.get(p.name)}" />
+							</g:if> <g:else>
+									${bean.properties.get(p.name)}
+								</g:else></td>
 					</g:else>
 				</g:each>
 			</tr>

@@ -39,7 +39,7 @@
 										default="List" />
 								</p>
 							</g:link></li>
-						<li class="nav-item"><g:link controller="turtle"
+						<li class="nav-item"><g:link controller="animal"
 								action="create" class="nav-link">
 								<i class="far fa-circle nav-icon"></i>
 								<p>
@@ -66,7 +66,7 @@
 											default="List" />
 									</p>
 								</g:link></li>
-							<li class="nav-item"><g:link controller="turtle"
+							<li class="nav-item"><g:link controller="animal"
 									action="create" class="nav-link">
 									<i class="far fa-circle nav-icon"></i>
 									<p>
