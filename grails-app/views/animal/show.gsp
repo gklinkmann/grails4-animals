@@ -78,9 +78,12 @@
 								<div class="tab-content" id="nav-tabContent">
 									<div class="tab-pane fade show active" id="nav-weighing"
 										role="tabpanel" aria-labelledby="nav-weighing-tab">
-										</p>
+										<p /><p /><p />
+										<g:link class="btn btn-primary" controller="weighing" action="create" resource="${this.animal}">
+											<g:message code="default.button.create.label" default="Add" />
+										</g:link>
 										<f:table collection="${animal.weighings}"
-											except="animal,dateCreated,lastUpdated,createdBy,id" />
+											except="animal,dateCreated,lastUpdated,lastUpdatedBy,createdBy,id" />
 									</div>
 									<div class="tab-pane fade" id="nav-photo" role="tabpanel"
 										aria-labelledby="nav-photo-tab">

@@ -40,31 +40,32 @@
 					<div class="col-md-6">
 						<div class="card">
 							<div class="card-body">
-
-								<div id="create-animal" class="content scaffold-create"
-									role="main">
-									<g:if test="${flash.message}">
-										<div class="message" role="status">${flash.message}</div>
-									</g:if>
-									<g:hasErrors bean="${this.animal}">
-										<ul class="errors" role="alert">
-											<g:eachError bean="${this.animal}" var="error">
-												<li<g:if
-														test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
-														error="${error}" /></li>
-											</g:eachError>
-										</ul>
-									</g:hasErrors>
-									<g:form resource="${this.animal}" method="POST">
-										<fieldset class="form">
-											<f:all bean="animal" />
-										</fieldset>
-										<fieldset class="buttons">
-											<g:submitButton name="create" class="save"
-												value="${message(code: 'default.button.create.label', default: 'Create')}" />
-										</fieldset>
-									</g:form>
-								</div>
+								<g:if test="${flash.message}">
+									<div class="message" role="status">${flash.message}</div>
+								</g:if>
+								<g:hasErrors bean="${this.animal}">
+									<div class="alert alert-danger alert-dismissible">
+										<button type="button" class="close" data-dismiss="alert"
+											aria-hidden="true">×</button>
+										<h5>
+											<i class="icon fas fa-ban"></i> Alert!
+										</h5>
+										<g:eachError bean="${this.animal}" var="error">
+											<li<g:if
+													test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
+													error="${error}" /></li>
+										</g:eachError>
+									</div>
+								</g:hasErrors>
+								<g:form class="form-horizontal" resource="${this.animal}" method="POST">
+									<fieldset class="form">
+										<f:all bean="animal" except="weighings,photos,createdBy,lastUpdatedBy" />
+									</fieldset>
+									<fieldset class="buttons">
+										<g:submitButton name="create" class="btn btn-primary"
+											value="${message(code: 'default.button.create.label', default: 'Create')}" />
+									</fieldset>
+								</g:form>
 							</div>
 							<!-- /.card-body -->
 						</div>

@@ -1,32 +1,44 @@
 package de.koo.animals
 
-import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
-class AnimalController {
+import grails.gorm.transactions.Transactional
+import grails.plugin.springsecurity.annotation.Secured
+import grails.validation.ValidationException
 
+class AnimalController {
+	def springSecurityService
+	
     AnimalService animalService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
+	
+	@Secured(["ROLE_USER"])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond animalService.list(params), model:[animalCount: animalService.count()]
     }
 
+	@Secured(["ROLE_USER"])
     def show(Long id) {
         respond animalService.get(id)
     }
 
+	@Secured(["ROLE_USER"])
     def create() {
         respond new Animal(params)
     }
 
+	@Secured(["ROLE_USER"])
+	@Transactional
     def save(Animal animal) {
         if (animal == null) {
             notFound()
             return
-        }
+        } else {
+			animal.createdBy=springSecurityService.principal.username
+			animal.lastUpdatedBy=springSecurityService.principal.username
+		}
 
         try {
             animalService.save(animal)
@@ -44,6 +56,8 @@ class AnimalController {
         }
     }
 
+	@Secured(["ROLE_USER"])
+	@Transactional
     def edit(Long id) {
         respond animalService.get(id)
     }
@@ -52,7 +66,9 @@ class AnimalController {
         if (animal == null) {
             notFound()
             return
-        }
+        } else {
+			animal.lastUpdatedBy=springSecurityService.principal.username
+		}
 
         try {
             animalService.save(animal)
@@ -70,6 +86,8 @@ class AnimalController {
         }
     }
 
+	@Secured(["ROLE_USER"])
+	@Transactional
     def delete(Long id) {
         if (id == null) {
             notFound()
