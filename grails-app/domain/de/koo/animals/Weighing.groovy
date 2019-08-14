@@ -21,7 +21,7 @@ class Weighing {
         comment(nullable:true)
 	}
 	String toString() {
-		def weighted=new java.text.SimpleDateFormat("dd.MM.yyyy").format(this.weighted)
+		def weighted=this.weighted?new java.text.SimpleDateFormat("dd.MM.yyyy").format(this.weighted):""
 		"${weighted}: ${this.weight}"
 	}
 }

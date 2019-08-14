@@ -1,32 +1,48 @@
 package de.koo.animals
 
-import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
-class WeighingController {
+import grails.gorm.transactions.Transactional
+import grails.plugin.springsecurity.annotation.Secured
+import grails.validation.ValidationException
+import grails.validation.ValidationException
 
+class WeighingController {
+	def springSecurityService
+	
     WeighingService weighingService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+	@Secured(["ROLE_USER"])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond weighingService.list(params), model:[weighingCount: weighingService.count()]
     }
 
+	@Secured(["ROLE_USER"])
     def show(Long id) {
         respond weighingService.get(id)
     }
 
+	@Secured(["ROLE_USER"])
     def create() {
         respond new Weighing(params)
     }
 
+	@Secured(["ROLE_USER"])
+	@Transactional
     def save(Weighing weighing) {
+		def animal
+		
         if (weighing == null) {
             notFound()
             return
-        }
+        } else {
+			weighing.createdBy=springSecurityService.principal.username
+			weighing.lastUpdatedBy=springSecurityService.principal.username
+			animal=Animal.get( weighing?.animal?.id )
+		}
 
         try {
             weighingService.save(weighing)
@@ -38,21 +54,26 @@ class WeighingController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'weighing.label', default: 'Weighing'), weighing.id])
-                redirect weighing
+                redirect(controller: "animal", action: "show", id: animal.id)
             }
             '*' { respond weighing, [status: CREATED] }
         }
     }
 
+	@Secured(["ROLE_USER"])
     def edit(Long id) {
         respond weighingService.get(id)
     }
 
+	@Secured(["ROLE_USER"])
+	@Transactional
     def update(Weighing weighing) {
         if (weighing == null) {
             notFound()
             return
-        }
+        } else {
+			weighing.lastUpdatedBy=springSecurityService.principal.username
+		}
 
         try {
             weighingService.save(weighing)
@@ -70,6 +91,7 @@ class WeighingController {
         }
     }
 
+	@Secured(["ROLE_USER"])
     def delete(Long id) {
         if (id == null) {
             notFound()

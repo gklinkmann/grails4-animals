@@ -21,10 +21,12 @@
 					</div>
 					<div class="col-sm-6">
 						<ol class="breadcrumb float-sm-right">
-							<li class="breadcrumb-item"><g:link controller="dashboard"><g:message
-										code="home.label" default="Home" /></g:link></li>
-							<li class="breadcrumb-item"><g:link controller="animal"><g:message
-										code="animals.label" default="Animals" /></g:link></li>
+							<li class="breadcrumb-item"><g:link controller="dashboard">
+									<g:message code="home.label" default="Home" />
+								</g:link></li>
+							<li class="breadcrumb-item"><g:link controller="animal">
+									<g:message code="animals.label" default="Animals" />
+								</g:link></li>
 							<li class="breadcrumb-item active"><g:message
 									code="animal.label" default="Animal" /></li>
 						</ol>
@@ -42,7 +44,14 @@
 						<div class="card">
 							<div class="card-body">
 								<g:if test="${flash.message}">
-									<div class="message" role="status">${flash.message}</div>
+									<div class="alert alert-info alert-dismissible">
+										<button type="button" class="close" data-dismiss="alert"
+											aria-hidden="true">×</button>
+										<h5>
+											<i class="icon fas fa-info"></i> Info!
+										</h5>
+										<div class="message" role="status">${flash.message}</div>
+									</div>
 								</g:if>
 								<f:display bean="animal" except="weighings,photos,createdBy" />
 							</div>
@@ -50,7 +59,8 @@
 							<div class="card-footer clearfix">
 								<g:form resource="${this.animal}" method="DELETE">
 									<fieldset class="buttons">
-										<g:link class="btn btn-primary" action="edit" resource="${this.animal}">
+										<g:link class="btn btn-primary" action="edit"
+											resource="${this.animal}">
 											<g:message code="default.button.edit.label" default="Edit" />
 										</g:link>
 										<input class="btn btn-danger float-right" type="submit"
@@ -81,9 +91,11 @@
 									<div class="tab-pane fade show active" id="nav-weighing"
 										role="tabpanel" aria-labelledby="nav-weighing-tab">
 										<p /><p /><p />
-										<g:link class="btn btn-primary" controller="weighing" action="create" resource="${this.animal}">
-											<g:message code="default.button.create.label" default="Add" />
-										</g:link>
+										<g:link class="btn btn-primary" controller="weighing"
+											action="create" params="['animal.id': animal?.id]">
+									${message(code: 'default.add.label', args: [message(code: 'weighing.label', default: 'Weighing')])}
+								</g:link>
+								
 										<f:table collection="${animal.weighings}"
 											except="animal,dateCreated,lastUpdated,lastUpdatedBy,createdBy,id" />
 									</div>

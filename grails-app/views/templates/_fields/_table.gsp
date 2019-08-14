@@ -14,7 +14,7 @@
 						<td><g:link method="GET" resource="${bean}">
 								<g:if
 									test="${bean.properties.get(p.name) instanceof java.sql.Timestamp}">
-									<g:formatDate format="dd.MM.yyyy H:m"
+									<g:formatDate format="dd.MM.yyyy"
 										date="${bean.properties.get(p.name)}" />
 								</g:if>
 								<g:else>
@@ -25,7 +25,7 @@
 					<g:else>
 						<td><g:if
 								test="${bean.properties.get(p.name) instanceof java.sql.Timestamp}">
-								<g:formatDate format="dd.MM.yyyy H:m"
+								<g:formatDate format="dd.MM.yyyy"
 									date="${bean.properties.get(p.name)}" />
 							</g:if> <g:else>
 									${bean.properties.get(p.name)}

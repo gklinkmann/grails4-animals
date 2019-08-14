@@ -21,10 +21,12 @@
 					</div>
 					<div class="col-sm-6">
 						<ol class="breadcrumb float-sm-right">
-							<li class="breadcrumb-item"><g:link controller="dashboard"><g:message
-										code="home.label" default="Home" /></g:link></li>
-							<li class="breadcrumb-item"><g:link controller="animal"><g:message
-										code="animals.label" default="Animals" /></g:link></li>
+							<li class="breadcrumb-item"><g:link controller="dashboard">
+									<g:message code="home.label" default="Home" />
+								</g:link></li>
+							<li class="breadcrumb-item"><g:link controller="animal">
+									<g:message code="animals.label" default="Animals" />
+								</g:link></li>
 							<li class="breadcrumb-item active"><g:message
 									code="animal.label" default="Animal" /></li>
 						</ol>
@@ -42,7 +44,14 @@
 						<div class="card">
 							<div class="card-body">
 								<g:if test="${flash.message}">
-									<div class="message" role="status">${flash.message}</div>
+									<div class="alert alert-info alert-dismissible">
+										<button type="button" class="close" data-dismiss="alert"
+											aria-hidden="true">×</button>
+										<h5>
+											<i class="icon fas fa-info"></i> Info!
+										</h5>
+										<div class="message" role="status">${flash.message}</div>
+									</div>
 								</g:if>
 								<g:hasErrors bean="${this.animal}">
 									<div class="alert alert-danger alert-dismissible">
