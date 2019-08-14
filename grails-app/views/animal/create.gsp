@@ -22,10 +22,12 @@
 					</div>
 					<div class="col-sm-6">
 						<ol class="breadcrumb float-sm-right">
-							<li class="breadcrumb-item"><a href="#"><g:message
-										code="home.label" default="Home" /></a></li>
+							<li class="breadcrumb-item"><g:link controller="dashboard"><g:message
+										code="home.label" default="Home" /></g:link></li>
+							<li class="breadcrumb-item"><g:link controller="animal"><g:message
+										code="animals.label" default="Animals" /></g:link></li>
 							<li class="breadcrumb-item active"><g:message
-									code="animals.label" default="Animals" /></li>
+									code="animal.label" default="Animal" /></li>
 						</ol>
 					</div>
 				</div>
