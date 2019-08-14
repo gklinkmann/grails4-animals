@@ -97,7 +97,9 @@
 								</g:link>
 								
 										<f:table collection="${animal.weighings}"
-											except="animal,dateCreated,lastUpdated,lastUpdatedBy,createdBy,id" />
+											except="animal,dateCreated,lastUpdated,lastUpdatedBy,createdBy,id" 
+											template="table2"
+											myProperty="Template: view/templates/_fields/_table2.gsp"/>
 									</div>
 									<div class="tab-pane fade" id="nav-photo" role="tabpanel"
 										aria-labelledby="nav-photo-tab">

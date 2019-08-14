@@ -28,6 +28,9 @@
 							<li class="breadcrumb-item"><g:link controller="animal">
 									<g:message code="animals.label" default="Animals" />
 								</g:link></li>
+							<li class="breadcrumb-item"><g:link controller="animal" action="show" id="${weighing.animal.id}">
+									<g:message code="animal.label" default="Animal" />
+								</g:link></li>
 							<li class="breadcrumb-item active"><g:message
 									code="weighing.label" default="Weighing" /></li>
 						</ol>

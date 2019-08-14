@@ -21,11 +21,6 @@ class WeighingController {
     }
 
 	@Secured(["ROLE_USER"])
-    def show(Long id) {
-        respond weighingService.get(id)
-    }
-
-	@Secured(["ROLE_USER"])
     def create() {
         respond new Weighing(params)
     }
@@ -68,11 +63,14 @@ class WeighingController {
 	@Secured(["ROLE_USER"])
 	@Transactional
     def update(Weighing weighing) {
+		def animal
+		
         if (weighing == null) {
             notFound()
             return
         } else {
 			weighing.lastUpdatedBy=springSecurityService.principal.username
+			animal=Animal.get( weighing?.animal?.id )
 		}
 
         try {
@@ -85,7 +83,7 @@ class WeighingController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'weighing.label', default: 'Weighing'), weighing.id])
-                redirect weighing
+                redirect(controller: "animal", action: "show", id: animal.id)
             }
             '*'{ respond weighing, [status: OK] }
         }
@@ -98,12 +96,13 @@ class WeighingController {
             return
         }
 
+		def animal=Animal.get(weighingService.get(id)?.animal?.id)
         weighingService.delete(id)
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'weighing.label', default: 'Weighing'), id])
-                redirect action:"index", method:"GET"
+                redirect(controller: "animal", action: "show", id: animal.id)
             }
             '*'{ render status: NO_CONTENT }
         }

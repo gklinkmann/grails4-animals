@@ -2,8 +2,9 @@
 	<thead>
 		<tr>
 			<g:each in="${domainProperties}" var="p" status="i">
-				<g:sortableColumn property="${p.property}" title="${p.label}" />
+				<th>${p.label}</th>
 			</g:each>
+			<th>Action</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -11,7 +12,7 @@
 			<tr>
 				<g:each in="${domainProperties}" var="p" status="j">
 					<g:if test="${j==0}">
-						<td><g:link method="GET" resource="${bean}" >
+						<td><g:link method="GET" resource="${bean}" action="edit">
 								<g:if
 									test="${bean.properties.get(p.name) instanceof java.sql.Timestamp}">
 									<g:formatDate format="dd.MM.yyyy"
@@ -32,6 +33,11 @@
 								</g:else></td>
 					</g:else>
 				</g:each>
+				<td><g:form resource="${bean}" method="DELETE">
+						<button class="btn btn-default btn-sm" type="submit" >
+							<i class="fas fa-trash" ></i>
+						</button>
+					</g:form></td>
 			</tr>
 		</g:each>
 	</tbody>
