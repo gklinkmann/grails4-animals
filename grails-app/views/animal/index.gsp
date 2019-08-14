@@ -40,7 +40,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="card">
-							<div class="card-body">
+							<div class="card-body table-responsive p-0">
 
 								<g:if test="${flash.message}">
 									<div class="message" role="status">${flash.message}</div>
