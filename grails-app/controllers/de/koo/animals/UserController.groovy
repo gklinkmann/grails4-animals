@@ -19,12 +19,14 @@ class UserController {
 
 	@Secured(["ROLE_ADMIN"])
     def show(Long id) {
-        respond userService.get(id)
+		def user=userService.get(id)
+		respond user, model:[roles:Role.list(), userRoles:user.authorities]
     }
 
 	@Secured(["ROLE_ADMIN"])
     def create() {
-        respond new User(params)
+		def user=new User(params)
+        respond user, model:[roles:Role.list()]
     }
 
 	@Secured(["ROLE_ADMIN"])
@@ -37,6 +39,12 @@ class UserController {
 
         try {
             userService.save(user)
+			UserRole.removeAll(user)
+			Role.list().each{ role ->
+				if (params.keySet().contains(role.authority)) {
+					UserRole.create(user, role)
+				}
+			}
         } catch (ValidationException e) {
             respond user.errors, view:'create'
             return
@@ -53,7 +61,8 @@ class UserController {
 
 	@Secured(["ROLE_ADMIN"])
     def edit(Long id) {
-        respond userService.get(id)
+		def user=userService.get(id)
+        respond user, model:[roles:Role.list(), userRoles:user.authorities]
     }
 
 	@Secured(["ROLE_ADMIN"])
@@ -66,6 +75,12 @@ class UserController {
 
         try {
             userService.save(user)
+			UserRole.removeAll(user)
+			Role.list().each{ role ->
+				if (params.keySet().contains(role.authority)) {
+					UserRole.create(user, role)
+				}
+			}
         } catch (ValidationException e) {
             respond user.errors, view:'edit'
             return

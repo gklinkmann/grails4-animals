@@ -54,6 +54,23 @@
 									</div>
 								</g:if>
 								<f:display bean="user" except="password" />
+								<g:form>
+									<fieldset class="form">
+										<div class="form-group row">
+											<div class="col-sm-5">
+												<label><g:message code="user.authorities.label" default="Authorities"/>:</label>
+											</div>
+											<div class="form-check col-sm-7">
+												<g:each in="${roles}" var="r">
+													<g:checkBox name="${r?.authority}" value="${r?.authority}" checked="${userRoles.contains(r)}" disabled="disabled"/>
+													<label class="form-check-label">${r?.authority?.encodeAsHTML()}</label>
+													<br />
+												</g:each>
+											</div>
+										</div>
+									</fieldset>
+								</g:form>
+
 								<g:form resource="${this.user}" method="DELETE">
 									<fieldset class="buttons">
 										<g:link class="btn btn-primary" action="edit"

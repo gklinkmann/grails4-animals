@@ -59,6 +59,18 @@
 									<g:hiddenField name="version" value="${this.user?.version}" />
 									<fieldset class="form">
 										<f:all bean="user" />
+										<div class="form-group row">
+											<div class="col-sm-5">
+												<label><g:message code="user.authorities.label" default="Authorities"/>:</label>
+											</div>
+											<div class="form-check col-sm-7">
+												<g:each in="${roles}" var="r">
+													<g:checkBox name="${r?.authority}" value="${r?.authority}" checked="${userRoles.contains(r)}" />
+													<label class="form-check-label">${r?.authority?.encodeAsHTML()}</label>
+													<br />
+												</g:each>
+											</div>
+										</div>
 									</fieldset>
 									<fieldset class="buttons">
 										<input class="btn btn-primary" type="submit"
