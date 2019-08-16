@@ -14,10 +14,7 @@
 			<div class="container-fluid">
 				<div class="row mb-2">
 					<div class="col-sm-6">
-						<h1>
-							<g:message code="animals.label" default="Animals" />
-							<small>Dashboard</small>
-						</h1>
+						<h1>Dashboard</h1>
 					</div>
 					<div class="col-sm-6">
 						<ol class="breadcrumb float-sm-right">
