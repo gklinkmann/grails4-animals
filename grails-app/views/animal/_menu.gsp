@@ -33,7 +33,7 @@
 					<ul class="nav nav-treeview">
 						<li class="nav-item"><g:link controller="animal"
 								class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
+								<i class="fas fa-list nav-icon"></i>
 								<p>
 									<g:message code="default.list.label" args="${['']}"
 										default="List" />
@@ -41,7 +41,7 @@
 							</g:link></li>
 						<li class="nav-item"><g:link controller="animal"
 								action="create" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
+								<i class="fas fa-plus nav-icon"></i>
 								<p>
 									<g:message code="default.add.label" args="${['']}"
 										default="Create" />
@@ -60,7 +60,7 @@
 						<ul class="nav nav-treeview">
 							<li class="nav-item"><g:link controller="user"
 									class="nav-link">
-									<i class="far fa-circle nav-icon"></i>
+									<i class="fas fa-list nav-icon"></i>
 									<p>
 										<g:message code="default.list.label" args="${['']}"
 											default="List" />
@@ -68,7 +68,7 @@
 								</g:link></li>
 							<li class="nav-item"><g:link controller="user"
 									action="create" class="nav-link">
-									<i class="far fa-circle nav-icon"></i>
+									<i class="fas fa-plus nav-icon"></i>
 									<p>
 										<g:message code="default.add.label" args="${['']}"
 											default="Create" />
