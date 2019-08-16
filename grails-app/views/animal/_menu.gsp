@@ -58,7 +58,7 @@
 							</p>
 					</a>
 						<ul class="nav nav-treeview">
-							<li class="nav-item"><g:link controller="animal"
+							<li class="nav-item"><g:link controller="user"
 									class="nav-link">
 									<i class="far fa-circle nav-icon"></i>
 									<p>
@@ -66,7 +66,7 @@
 											default="List" />
 									</p>
 								</g:link></li>
-							<li class="nav-item"><g:link controller="animal"
+							<li class="nav-item"><g:link controller="user"
 									action="create" class="nav-link">
 									<i class="far fa-circle nav-icon"></i>
 									<p>

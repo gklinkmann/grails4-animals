@@ -105,7 +105,9 @@
 										aria-labelledby="nav-photo-tab">
 										</p>
 										<f:table collection="${animal.photos}"
-											except="animal,dateCreated,lastUpdated,createdBy,id" />
+											except="animal,dateCreated,lastUpdated,createdBy,id"
+											template="table2"
+											myProperty="Template: view/templates/_fields/_table2.gsp"/>
 									</div>
 								</div>
 							</div>

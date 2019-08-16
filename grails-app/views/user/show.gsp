@@ -3,13 +3,11 @@
 <head>
 <meta name="layout" content="adminLTE" />
 <g:set var="entityName"
-	value="${message(code: 'animal.label', default: 'Animal')}" />
-<title><g:message code="default.list.label" args="[entityName]" /></title>
-<asset:link href="css/animals.css" rel="stylesheet" type="text/css" />
+	value="${message(code: 'user.label', default: 'User')}" />
+<title><g:message code="default.show.label" args="[entityName]" /></title>
 </head>
 <body>
 	<g:render template="menu" />
-
 	<!-- Content Wrapper. Contains page content -->
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
@@ -18,7 +16,7 @@
 				<div class="row mb-2">
 					<div class="col-sm-6">
 						<h1>
-							<g:message code="default.list.label" args="[entityName]" />
+							<g:message code="default.show.label" args="[entityName]" />
 						</h1>
 					</div>
 					<div class="col-sm-6">
@@ -26,8 +24,11 @@
 							<li class="breadcrumb-item"><g:link controller="dashboard">
 									<g:message code="home.label" default="Home" />
 								</g:link></li>
+							<li class="breadcrumb-item"><g:link controller="user">
+									<g:message code="users.label" default="Users" />
+								</g:link></li>
 							<li class="breadcrumb-item active"><g:message
-									code="animals.label" default="Animals" /></li>
+									code="user.label" default="User" /></li>
 						</ol>
 					</div>
 				</div>
@@ -39,10 +40,9 @@
 		<section class="content">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-6">
 						<div class="card">
-							<div class="card-body table-responsive p-3">
-
+							<div class="card-body">
 								<g:if test="${flash.message}">
 									<div class="alert alert-info alert-dismissible">
 										<button type="button" class="close" data-dismiss="alert"
@@ -53,19 +53,18 @@
 										<div class="message" role="status">${flash.message}</div>
 									</div>
 								</g:if>
-								<div class="row">
-									<div class="col-sm-12">
-										<f:table collection="${animalList}" />
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-12 col-md-6"></div>
-									<div class="col-sm-12 col-md-6">
-										<div class="pagination">
-											<g:paginate total="${animalCount ?: 0}" maxsteps="3" />
-										</div>
-									</div>
-								</div>
+								<f:display bean="user" except="password" />
+								<g:form resource="${this.user}" method="DELETE">
+									<fieldset class="buttons">
+										<g:link class="btn btn-primary" action="edit"
+											resource="${this.user}">
+											<g:message code="default.button.edit.label" default="Edit" />
+										</g:link>
+										<input class="btn btn-danger float-right" type="submit"
+											value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+											onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+									</fieldset>
+								</g:form>
 							</div>
 							<!-- /.card-body -->
 						</div>

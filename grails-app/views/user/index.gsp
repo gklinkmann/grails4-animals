@@ -3,9 +3,8 @@
 <head>
 <meta name="layout" content="adminLTE" />
 <g:set var="entityName"
-	value="${message(code: 'animal.label', default: 'Animal')}" />
+	value="${message(code: 'user.label', default: 'User')}" />
 <title><g:message code="default.list.label" args="[entityName]" /></title>
-<asset:link href="css/animals.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<g:render template="menu" />
@@ -27,7 +26,7 @@
 									<g:message code="home.label" default="Home" />
 								</g:link></li>
 							<li class="breadcrumb-item active"><g:message
-									code="animals.label" default="Animals" /></li>
+									code="users.label" default="Users" /></li>
 						</ol>
 					</div>
 				</div>
@@ -42,27 +41,26 @@
 					<div class="col-md-12">
 						<div class="card">
 							<div class="card-body table-responsive p-3">
-
-								<g:if test="${flash.message}">
-									<div class="alert alert-info alert-dismissible">
-										<button type="button" class="close" data-dismiss="alert"
-											aria-hidden="true">×</button>
-										<h5>
-											<i class="icon fas fa-info"></i> Info!
-										</h5>
-										<div class="message" role="status">${flash.message}</div>
-									</div>
-								</g:if>
 								<div class="row">
 									<div class="col-sm-12">
-										<f:table collection="${animalList}" />
+										<g:if test="${flash.message}">
+											<div class="alert alert-info alert-dismissible">
+												<button type="button" class="close" data-dismiss="alert"
+													aria-hidden="true">×</button>
+												<h5>
+													<i class="icon fas fa-info"></i> Info!
+												</h5>
+												<div class="message" role="status">${flash.message}</div>
+											</div>
+										</g:if>
+										<f:table collection="${userList}" except="password,id" />
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-sm-12 col-md-6"></div>
 									<div class="col-sm-12 col-md-6">
 										<div class="pagination">
-											<g:paginate total="${animalCount ?: 0}" maxsteps="3" />
+											<g:paginate total="${userCount ?: 0}" />
 										</div>
 									</div>
 								</div>

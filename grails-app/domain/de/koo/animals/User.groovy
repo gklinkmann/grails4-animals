@@ -23,8 +23,12 @@ class User implements Serializable {
     }
 
     static constraints = {
+    		username nullable: false, blank: false, unique: true
         password nullable: false, blank: false, password: true
-        username nullable: false, blank: false, unique: true
+		enabled()
+		accountExpired()
+		accountLocked()
+		passwordExpired()
     }
 
     static mapping = {

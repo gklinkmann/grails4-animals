@@ -17,7 +17,7 @@
 				<!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 				<li class="nav-item"><g:link controller="dashboard"
-						class="nav-link active">
+						class="nav-link">
 						<i class="nav-icon fas fa-tachometer-alt"></i>
 						<p>
 							<g:message code="dashboard.label" default="Dashboard" />
@@ -51,7 +51,7 @@
 				<sec:access expression="hasRole('ROLE_ADMIN')">
 
 					<li class="nav-item has-treeview menu-open"><a href="#"
-						class="nav-link"> <i class="nav-icon fas fa-users"></i>
+						class="nav-link active"> <i class="nav-icon fas fa-users"></i>
 							<p>
 								<g:message code="users.label" default="Users" />
 								<i class="right fas fa-angle-left"></i>

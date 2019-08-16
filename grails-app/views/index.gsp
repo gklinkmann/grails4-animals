@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="layout" content="animals"/>
+    <meta name="layout" content="blank"/>
     <title>Welcome to Animals</title>
 </head>
 <body>
