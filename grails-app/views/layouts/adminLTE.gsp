@@ -23,6 +23,8 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
 	rel="stylesheet" type="text/css" />
+<!-- fancybox -->
+<asset:link rel="stylesheet" href="css/fancybox/jquery.fancybox.min.css" />
 
 <g:layoutHead />
 </head>
@@ -104,7 +106,7 @@
 
 		<footer class="main-footer">
 			<div class="float-right d-none d-sm-block">
-				<b>Version</b> 0.1
+				<b>Version</b> <g:meta name="info.app.version"/>
 			</div>
 			<strong>03.08.2019 <a href="https://blog.k-oo.de">k-oo.de</a>.
 			</strong>
@@ -124,6 +126,8 @@
 	<asset:javascript src="js/bootstrap/js/bootstrap.bundle.min.js" />
 	<!-- FastClick -->
 	<asset:javascript src="js/fastclick/fastclick.js" />
+	<!-- fancybox -->
+	<asset:javascript src="js/fancybox/jquery.fancybox.min.js" />
 	<!-- AdminLTE App -->
 	<asset:javascript src="js/adminlte.min.js" />
 

@@ -11,6 +11,6 @@ class UrlMappings {
 		"/"(controller:"dashboard")
 		"403"(view:'/error/forbidden')
 		"404"(view:'/error/notFound')
-		"500"(view:'/error')
+		"500"(view:'/error/error')
 	}
 }

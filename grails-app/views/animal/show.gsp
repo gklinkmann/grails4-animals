@@ -81,33 +81,52 @@
 									<div class="nav nav-tabs" id="nav-tab" role="tablist">
 										<a class="nav-item nav-link active" id="nav-weighing-tab"
 											data-toggle="tab" href="#nav-weighing"> ${message(code:
-											'weighing.label', default: 'Weighing')} </a> <a
+											'weighings.label', default: 'Weighings')} </a> <a
 											class="nav-item nav-link" id="nav-photo-tab"
 											data-toggle="tab" href="#nav-photo"> ${message(code:
-											'photo.label', default: 'Photo')} </a>
+											'photos.label', default: 'Photos')} </a>
 									</div>
 								</nav>
 								<div class="tab-content" id="nav-tabContent">
 									<div class="tab-pane fade show active" id="nav-weighing"
 										role="tabpanel" aria-labelledby="nav-weighing-tab">
-										<p /><p /><p />
+										<p />
+										<p />
+										<p />
 										<g:link class="btn btn-primary" controller="weighing"
 											action="create" params="['animal.id': animal?.id]">
-									${message(code: 'default.add.label', args: [message(code: 'weighing.label', default: 'Weighing')])}
-								</g:link>
-								
+											${message(code: 'default.add.label', args: [message(code: 'weighing.label', default: 'Weighing')])}
+										</g:link>
+
 										<f:table collection="${animal.weighings}"
-											except="animal,dateCreated,lastUpdated,lastUpdatedBy,createdBy,id" 
+											except="animal,dateCreated,lastUpdated,lastUpdatedBy,createdBy,id"
 											template="table2"
-											myProperty="Template: view/templates/_fields/_table2.gsp"/>
+											myProperty="Template: view/templates/_fields/_table2.gsp" />
 									</div>
 									<div class="tab-pane fade" id="nav-photo" role="tabpanel"
 										aria-labelledby="nav-photo-tab">
-										</p>
-										<f:table collection="${animal.photos}"
-											except="animal,dateCreated,lastUpdated,createdBy,id"
-											template="table2"
-											myProperty="Template: view/templates/_fields/_table2.gsp"/>
+										<p />
+										<p />
+										<p />
+
+										<g:uploadForm controller="photo" action="upload">
+											<input type="hidden" name="animal.id" value="${animal?.id}" />
+
+											<div class="form-group">
+												<div class="input-group">
+													<div class="custom-file">
+														<input type="file" class="custom-file-input" id="image" name="image" 
+															aria-describedby="imageAddon01"> 
+														<label class="custom-file-label" for="image">Choose file</label>
+													</div>
+													<div class="input-group-append">
+														<button class="btn btn-primary" type="submit">Upload</button>
+													</div>
+												</div>
+											</div>
+										</g:uploadForm>
+
+										<g:displayImages images="${animal.photos}" animalName="${animal.name}" />
 									</div>
 								</div>
 							</div>
