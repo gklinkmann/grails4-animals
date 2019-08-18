@@ -47,3 +47,8 @@ grails war
 grails package
 java -Dgrails.env=dev -jar build/libs/grails4-animals-0.2.war
 ```
+
+open `http://localhost:8080/animals` in browser
+- bootstraped user accounts
+        - user: admin pw: admin
+        - user: user pw: user
