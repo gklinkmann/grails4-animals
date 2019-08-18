@@ -7,6 +7,8 @@ grails 4 example with bootstrap 4 (adminLTE template), spring-security, image ga
 see [wiki](https://github.com/gklinkmann/grails4-animals/wiki)
 
 ## Installation
+[Install grails](http://docs.grails.org/latest/guide/gettingStarted.html) and clone the repo.
+
 ```bash
 git clone https://github.com/gklinkmann/grails4-animals.wiki.git
 ```
@@ -23,4 +25,25 @@ You have to configure the webserver url and the image path in the [application.y
                     images:
                         path: '/Users/username/public_html/${info.app.name}/images/animals'
                         url: '${apache.serverURL}/images/animals'
+```
 
+## Deployment
+see [Grails Doku](http://docs.grails.org/latest/guide/deployment.html)
+
+- run the app in development environment.
+
+```bash
+grails run-app
+```
+- generate a war file 
+
+```bash
+grails war
+```
+
+- generate a runnable war file
+
+```bash
+grails package
+java -Dgrails.env=dev -jar build/libs/grails4-animals-0.2.war
+```
