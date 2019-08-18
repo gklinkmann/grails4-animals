@@ -12,7 +12,7 @@ git clone https://github.com/gklinkmann/grails4-animals.wiki.git
 ```
 
 ## Configuration
-You have to configure the webserver url and the image path in the [application.yml](https://github.com/gklinkmann/grails4-animals/blob/master/grails-app/conf/application.yml) config file.
+You have to configure the webserver url and the image path in the [application.yml](https://github.com/gklinkmann/grails4-animals/blob/master/grails-app/conf/application.yml) config file. Esp. `http://localhost/~gklinkmann/grails4-animals`.
 
 ```yml
         apache:
