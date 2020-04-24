@@ -17,13 +17,18 @@ node {
    }
 
    stage('test') {
-      sh "gradle test"
+   	  try {
+      	sh "gradle test"
+   	  } catch (Exception e){
+   	  	echo "test of ${env.BUILD_ID} failed on ${env.JENKINS_URL}"
+   	  	throw e	
+   	  } finally {
+   	    junit 'build/test-results/**/*.xml'    
+   	  }
    }
 
    stage('packaging') {
-      sh "gradle war"
-   }
-   stage('deploying') {
-      sh "gradle deployTest"
+      sh "gradle assemble"
+   	  archiveArtifacts artifacts: 'build/libs/*.war', fingerprint: true
    }
 }
