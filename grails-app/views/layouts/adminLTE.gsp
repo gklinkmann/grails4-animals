@@ -108,7 +108,7 @@
 			<div class="float-right d-none d-sm-block">
 				<b>Version</b> <g:meta name="info.app.version"/>
 			</div>
-			<strong>03.08.2019 <a href="https://blog.k-oo.de">k-oo.de</a>.
+			<strong>24.04.2020 <a href="https://blog.k-oo.de">k-oo.de</a>.
 			</strong>
 		</footer>
 
