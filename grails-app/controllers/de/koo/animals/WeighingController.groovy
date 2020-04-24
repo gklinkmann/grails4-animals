@@ -49,7 +49,7 @@ class WeighingController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'weighing.label', default: 'Weighing'), weighing.id])
-                redirect(controller: "animal", action: "show", id: animal.id)
+                redirect(controller: "animal", action: "show", id: animal?.id)
             }
             '*' { respond weighing, [status: CREATED] }
         }
@@ -83,7 +83,7 @@ class WeighingController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'weighing.label', default: 'Weighing'), weighing.id])
-                redirect(controller: "animal", action: "show", id: animal.id)
+                redirect(controller: "animal", action: "show", id: animal?.id)
             }
             '*'{ respond weighing, [status: OK] }
         }
@@ -102,7 +102,7 @@ class WeighingController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'weighing.label', default: 'Weighing'), id])
-                redirect(controller: "animal", action: "show", id: animal.id)
+                redirect(controller: "animal", action: "show", id: animal?.id)
             }
             '*'{ render status: NO_CONTENT }
         }
