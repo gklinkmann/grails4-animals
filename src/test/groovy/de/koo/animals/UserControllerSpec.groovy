@@ -1,18 +1,24 @@
 package de.koo.animals
 
+import grails.testing.gorm.DataTest
 import grails.testing.gorm.DomainUnitTest
 import grails.testing.web.controllers.ControllerUnitTest
 import grails.validation.ValidationException
 import spock.lang.*
 
-class UserControllerSpec extends Specification implements ControllerUnitTest<UserController>, DomainUnitTest<User> {
+class UserControllerSpec extends Specification 
+	implements ControllerUnitTest<UserController>, DataTest {
 
+	Class<?>[] getDomainClassesToMock(){
+		return [User,Role,UserRole] as Class[]
+	}
+		
     def populateValidParams(params) {
         assert params != null
 
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
-        assert false, "TODO: Provide a populateValidParams() implementation for this generated test suite"
+        params["username"] = 'test'
+        params["password"] = 'test'
+        params["ROLE_USER"] = 'ROLE_USER'
     }
 
     void "Test the index action returns the correct model"() {

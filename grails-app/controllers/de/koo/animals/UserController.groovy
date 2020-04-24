@@ -20,7 +20,7 @@ class UserController {
 	@Secured(["ROLE_ADMIN"])
     def show(Long id) {
 		def user=userService.get(id)
-		respond user, model:[roles:Role.list(), userRoles:user.authorities]
+		respond user, model:[roles:Role.list(), userRoles:user?.authorities]
     }
 
 	@Secured(["ROLE_ADMIN"])
@@ -62,7 +62,7 @@ class UserController {
 	@Secured(["ROLE_ADMIN"])
     def edit(Long id) {
 		def user=userService.get(id)
-        respond user, model:[roles:Role.list(), userRoles:user.authorities]
+        respond user, model:[roles:Role.list(), userRoles:user?.authorities]
     }
 
 	@Secured(["ROLE_ADMIN"])
