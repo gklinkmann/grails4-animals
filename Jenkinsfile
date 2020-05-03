@@ -30,7 +30,7 @@ node {
    }
 
    stage('packaging') {
-      sh "./grailsw test war"
+      sh "./grailsw war"
    	  archiveArtifacts artifacts: 'build/libs/*.war', fingerprint: true
    }
 }
