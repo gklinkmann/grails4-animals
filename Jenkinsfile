@@ -10,6 +10,8 @@ node {
    stage('check tools') {
       sh "pwd"
       sh "gradle --version"
+      sh "chmod u+x ./grailsw"
+      sh "./grailsw -version"
    }
 
    stage('clean') {
