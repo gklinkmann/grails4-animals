@@ -9,6 +9,7 @@ node {
 
    stage('check tools') {
       sh "pwd"
+      sh "gradle --version"
       sh "grails -version"
    }
 
@@ -18,7 +19,7 @@ node {
 
    stage('test') {
    	  try {
-      	sh "grails test-app"
+      	sh "gradle test"
    	  } catch (Exception e){
    	  	echo "test of ${env.BUILD_ID} failed on ${env.JENKINS_URL}"
    	  	throw e	
@@ -28,7 +29,7 @@ node {
    }
 
    stage('packaging') {
-      sh "grailsw war"
+      sh "grails war"
    	  archiveArtifacts artifacts: 'build/libs/*.war', fingerprint: true
    }
 }
