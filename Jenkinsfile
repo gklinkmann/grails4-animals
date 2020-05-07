@@ -34,6 +34,6 @@ node {
    }
 
    stage('run') {
-      sh "java -jar -Dgrails.env=dev ./build/libs/grails4-animals-1.0.war"
+      sh "nohup java -jar -Dgrails.env=dev ./build/libs/grails4-animals-1.0.war"
    }
 }
