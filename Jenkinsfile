@@ -29,11 +29,11 @@ node {
    }
 
    stage('package') {
-      sh "grails package"
+      sh "grails war"
    	  archiveArtifacts artifacts: 'build/libs/*.war', fingerprint: true
    }
 
-   stage('run') {
-      sh "nohup java -jar -Dgrails.env=dev ./build/libs/grails4-animals-1.0.war"
-   }
+//   stage('deploy') {
+//      sh "nohup java -jar -Dgrails.env=dev ./build/libs/grails4-animals-1.0.war"
+//   }
 }
