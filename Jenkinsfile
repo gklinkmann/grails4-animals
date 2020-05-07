@@ -28,8 +28,12 @@ node {
    	  }
    }
 
-   stage('packaging') {
+   stage('package') {
       sh "grails package"
    	  archiveArtifacts artifacts: 'build/libs/*.war', fingerprint: true
+   }
+
+   stage('run') {
+      sh "java -jar -Dgrails.env=dev ./build/libs/grails4-animals-1.0.war"
    }
 }
