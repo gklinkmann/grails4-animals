@@ -29,7 +29,7 @@ node {
    }
 
    stage('packaging') {
-      sh "grails war"
+      sh "grails package"
    	  archiveArtifacts artifacts: 'build/libs/*.war', fingerprint: true
    }
 }
